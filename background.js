@@ -11,6 +11,13 @@ const starter_func = (tab) => {
           chrome.tabs.executeScript(null, { file: "./foreground.js" });
           chrome.tabs.insertCSS(null, { file: "./mybtn.css" });
           console.log("You are in instagram tfFff");
+        } else if (
+          current_tab_info.url.search("https://") == 0 &&
+          current_tab_info.url.search(".instagram.com/stories/") > 0
+        ) {
+          chrome.tabs.executeScript(null, { file: "./foreground.js" });
+          chrome.tabs.insertCSS(null, { file: "./mybtn.css" });
+          console.log("You are in instagram tfFff stories page");
         } else {
           console.log("You are not in instagram");
         }
@@ -36,6 +43,13 @@ chrome.tabs.onUpdated.addListener(function (tabID, changeInfo, tab) {
         chrome.tabs.executeScript(null, { file: "./foreground.js" });
         chrome.tabs.insertCSS(null, { file: "./mybtn.css" });
         console.log("You are in instagram tfFff");
+      } else if (
+        tab.url.search("https://") == 0 &&
+        tab.url.search(".instagram.com/stories/") > 0
+      ) {
+        chrome.tabs.executeScript(null, { file: "./foreground.js" });
+        chrome.tabs.insertCSS(null, { file: "./mybtn.css" });
+        console.log("You are in instagram tfFff stories page");
       } else {
         console.log("You are not in instagram");
       }
