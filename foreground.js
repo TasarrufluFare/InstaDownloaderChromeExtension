@@ -76,8 +76,9 @@ if (document.getElementById("Tasarruflu Downloader") === null) {
             .querySelector("video").src;
           console.log(video_url);
           if (video_url.startsWith("blob:")) {
-            alert("This content is encrypted!");
-            console.log("This content is encrypted!");
+            alert("This post contains an encrypted content!");
+            console.log("This post contains an encrypted content!");
+            throw new Error("Whoops!");
           } else {
             fetchFile(video_url);
             download_in_progress = false;
@@ -93,6 +94,7 @@ if (document.getElementById("Tasarruflu Downloader") === null) {
               console.log(video_url1);
               if (video_url1.startsWith("blob:")) {
                 console.log("This content is encrypted!");
+                throw new Error("Whoops!");
               } else {
                 fetchFile(video_url1);
                 download_in_progress = false;
@@ -109,7 +111,9 @@ if (document.getElementById("Tasarruflu Downloader") === null) {
             function findbackbtn(given_try_count) {
               try {
                 console.log("First Try");
-                var gobackbtn = document.querySelector("._aahh");
+                var gobackbtn = document
+                  .querySelector("._aamm")
+                  .querySelector("._aahh");
                 console.log(gobackbtn.ariaLabel);
                 if (gobackbtn === null && given_try_count < 5) {
                   console.log("Trying again");
@@ -183,6 +187,7 @@ if (document.getElementById("Tasarruflu Downloader") === null) {
               }
               //setTimeout(findbackbtn, 500);
             }
+            var blob_url_set = new Set();
             function findnextbtn() {
               try {
                 try {
@@ -191,7 +196,12 @@ if (document.getElementById("Tasarruflu Downloader") === null) {
                     .querySelector("._ab1c")
                     .querySelector("video").src;
                   if (get_video_url2.startsWith("blob:")) {
-                    console.log("This content is encrypted!");
+                    console.log("This post contains an encrypted content!");
+                    if (blob_url_set.has(get_video_url2) == false) {
+                      blob_url_set.add(get_video_url2);
+                      next_item_count--;
+                    }
+                    throw new Error("Whoops!");
                   } else {
                     content_set.add(get_video_url2);
                   }
@@ -211,7 +221,9 @@ if (document.getElementById("Tasarruflu Downloader") === null) {
                 }
                 console.log("First Try for next button");
                 try {
-                  var gonextbtn = document.querySelector("._aahi");
+                  var gonextbtn = document
+                    .querySelector("._aamm")
+                    .querySelector("._aahi");
                   console.log(gonextbtn.ariaLabel);
                   gonextbtn.click();
                   console.log("Buton bulundu tiklandi.");

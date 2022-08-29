@@ -7,7 +7,7 @@
     "activeTab",
     "https://www.instagram.com/p/*"
   ],
-  "version": "1.0",
+  "version": "1.3",
   "manifest_version": 2,
   "icons": { "128": "images/icon.png" },
   "background": {
